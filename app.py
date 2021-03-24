@@ -65,7 +65,7 @@ def home():
     return 'App is Healthy'
 
 
-@app.route('/gradient', methods=['POST'])
+@app.route('/gradient', methods=['GET','POST'])
 def gradient():       
         
     content = scale_data(request.json)
