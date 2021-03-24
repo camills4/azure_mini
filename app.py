@@ -4,7 +4,6 @@ import json
 import pickle
 
 from flask import Flask, request, jsonify
-from keras.models import load_model
 import numpy as np
 
 feature = [
