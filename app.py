@@ -8,19 +8,19 @@ from keras.models import load_model
 import numpy as np
 
 feature = [
-    'age', 
-    'sex', 
-    'chest_pain', 
-    'blood_pressure', 
-    'serum_cholestoral',
-    'fasting_blood_sugar', 
-    'electrocardiographic', 
-    'max_heart_rate',
-    'induced_angina', 
-    'ST_depression', 
-    'slope', 
-    'vessels', 
-    'thal',
+    'CreditScore', 
+    'Age', 
+    'Tenure', 
+    'Balance', 
+    'NumOfProducts', 
+    'HasCrCard', 
+    'IsActiveMember', 
+    'EstimatedSalary', 
+    'France', 
+    'Germany', 
+    'Spain', 
+    'Female', 
+    'Male',
 ]
 
 # Load saved ML models
@@ -48,10 +48,10 @@ def scale_data(data_json):
 # Convert scaled json data to a numpy array
 def convert_to_array(data_dict):
     
-    myarray = [data_dict[key] for key in features]
+    myarray = [data_dict[key] for key in feature]
     myarray = np.array(myarray)
     
-    return myarray.reshape(-1, len(features))
+    return myarray.reshape(-1, len(feature))
 
 
 # make app
@@ -71,11 +71,6 @@ def gradient():
     content = scale_data(request.json)
     data_array = convert_to_array(content)
     prediction = int(gradient_model.predict(data_array))
-    
-    return jsonify(prediction)
-
-
-
     
     return jsonify(prediction)
 
